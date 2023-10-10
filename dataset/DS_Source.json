@@ -1,0 +1,40 @@
+{
+	"name": "DS_Source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Blob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "sourcecontainer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Credit_ID",
+				"type": "String"
+			},
+			{
+				"name": "Card_Type",
+				"type": "String"
+			},
+			{
+				"name": "Credit_Name",
+				"type": "String"
+			},
+			{
+				"name": "Credit_score",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
