@@ -1,0 +1,54 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('src')",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "desti",
+								"value": {
+									"value": "@variables('src')",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"src": {
+				"type": "Array",
+				"defaultValue": [
+					"str1",
+					"str2",
+					"str3"
+				]
+			},
+			"desti": {
+				"type": "Array",
+				"defaultValue": []
+			}
+		},
+		"annotations": []
+	}
+}
