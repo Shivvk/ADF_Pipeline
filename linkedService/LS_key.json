@@ -1,0 +1,10 @@
+{
+	"name": "LS_key",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://svkkey.vault.azure.net/"
+		}
+	}
+}
