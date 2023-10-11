@@ -150,15 +150,15 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "DS_Azure_src_copy",
+												"referenceName": "DS_METADATA_SRC",
 												"type": "DatasetReference",
 												"parameters": {
-													"Schema_src_copy": {
-														"value": "@item().SCHEMANAME",
+													"Schema_src": {
+														"value": "item().SCHEMANAME",
 														"type": "Expression"
 													},
-													"table_scr": {
-														"value": "@item().TABLENAME",
+													"tablename_src": {
+														"value": "item().TABLENAME",
 														"type": "Expression"
 													}
 												}
