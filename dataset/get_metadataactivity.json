@@ -1,17 +1,9 @@
 {
 	"name": "get_metadataactivity",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "LS_Blob",
-			"type": "LinkedServiceReference"
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
-			"location": {
-				"type": "AzureBlobStorageLocation",
-				"container": "input"
-			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
