@@ -1,0 +1,60 @@
+{
+	"name": "PL_Append_variable",
+	"properties": {
+		"activities": [
+			{
+				"name": "Append variable1",
+				"type": "AppendVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "M",
+					"value": {
+						"value": "@int(90)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Append variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp",
+					"value": {
+						"value": "@variables('M')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"M": {
+				"type": "Array",
+				"defaultValue": [
+					20,
+					30,
+					40,
+					50,
+					60
+				]
+			},
+			"temp": {
+				"type": "Array"
+			}
+		},
+		"annotations": []
+	}
+}
