@@ -10,7 +10,7 @@
 					"referenceName": "LS_key",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "Blobkey"
+				"secretName": "sink"
 			}
 		}
 	}
