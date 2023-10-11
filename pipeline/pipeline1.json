@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "Select * from metadata ",
+						"sqlReaderQuery": "Select  * from metadata;",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -45,7 +45,7 @@
 						"value": "@activity('Lookup1').output.value",
 						"type": "Expression"
 					},
-					"isSequential": true,
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "Get Metadata1",
@@ -65,11 +65,11 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"Schema_src": {
-											"value": "@item().SCHEMANAME",
+											"value": "@item().schemaname",
 											"type": "Expression"
 										},
 										"tablename_src": {
-											"value": "@item().TABLENAME",
+											"value": "@item().tablename",
 											"type": "Expression"
 										}
 									}
@@ -154,11 +154,11 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"Schema_src": {
-														"value": "item().SCHEMANAME",
+														"value": "@item().schemaname\n\n",
 														"type": "Expression"
 													},
 													"tablename_src": {
-														"value": "item().TABLENAME",
+														"value": "@item().tablename",
 														"type": "Expression"
 													}
 												}
@@ -170,7 +170,7 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"desti_Blobcontainer": {
-														"value": "@item().BLOBCONTAINER",
+														"value": "@item().blobcontainer",
 														"type": "Expression"
 													}
 												}
