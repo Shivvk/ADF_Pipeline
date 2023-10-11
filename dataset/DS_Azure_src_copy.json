@@ -1,0 +1,30 @@
+{
+	"name": "DS_Azure_src_copy",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZURE",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Schema_src_copy": {
+				"type": "string"
+			},
+			"table_scr": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().Schema_src_copy",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().table_scr",
+				"type": "Expression"
+			}
+		}
+	}
+}

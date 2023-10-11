@@ -1,0 +1,30 @@
+{
+	"name": "DS_METADATA_SRC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZURE",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Schema_src": {
+				"type": "string"
+			},
+			"tablename_src": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().Schema_src",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().tablename_src",
+				"type": "Expression"
+			}
+		}
+	}
+}
