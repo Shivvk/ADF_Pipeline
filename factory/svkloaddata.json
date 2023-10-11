@@ -1,0 +1,9 @@
+{
+	"name": "svkloaddata",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "300e1ad7-a87c-48d3-9a91-c5237e8ecaa7",
+		"tenantId": "bf93bb5e-ecf0-4e3d-be0e-79b5cc527a48"
+	}
+}
