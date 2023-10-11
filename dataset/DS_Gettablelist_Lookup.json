@@ -1,0 +1,12 @@
+{
+	"name": "DS_Gettablelist_Lookup",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZURE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
