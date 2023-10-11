@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "Select  * from metadata;",
+						"sqlReaderQuery": "Select  * from metadata",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -75,7 +75,7 @@
 									}
 								},
 								"fieldList": [
-									"exists"
+									"columnCount"
 								]
 							}
 						},
@@ -533,6 +533,30 @@
 							}
 						}
 					]
+				}
+			},
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-57.eastus.logic.azure.com:443/workflows/f3d229f64c4940e79dd1fc6a3b350ded/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=NZfrVaEml02MLR30yUw1auHkNYfIV6a35_N7f9WIPHQ",
+					"method": "GET"
 				}
 			}
 		],
