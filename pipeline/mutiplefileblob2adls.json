@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "DelimitedText2",
+						"referenceName": "src_blob",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
