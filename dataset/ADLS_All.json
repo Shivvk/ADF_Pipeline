@@ -1,0 +1,79 @@
+{
+	"name": "ADLS_All",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "sinkdesti"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "year",
+				"type": "String"
+			},
+			{
+				"name": "ACCOUNT",
+				"type": "String"
+			},
+			{
+				"name": "AMOUNT1",
+				"type": "String"
+			},
+			{
+				"name": "AMOUNT2",
+				"type": "String"
+			},
+			{
+				"name": "AMOUNT3",
+				"type": "String"
+			},
+			{
+				"name": "AMOUNT4",
+				"type": "String"
+			},
+			{
+				"name": "AMOUNT5",
+				"type": "String"
+			},
+			{
+				"name": "AMOUNT6",
+				"type": "String"
+			},
+			{
+				"name": "AMOUNT7",
+				"type": "String"
+			},
+			{
+				"name": "AMOUNT8",
+				"type": "String"
+			},
+			{
+				"name": "AMOUNT9",
+				"type": "String"
+			},
+			{
+				"name": "AMOUNT10",
+				"type": "String"
+			},
+			{
+				"name": "AMOUNT11",
+				"type": "String"
+			},
+			{
+				"name": "AMOUNT12",
+				"type": "String"
+			}
+		]
+	}
+}
