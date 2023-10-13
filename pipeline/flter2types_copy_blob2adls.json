@@ -24,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -52,14 +53,7 @@
 						{
 							"name": "Copy data1",
 							"type": "Copy",
-							"dependsOn": [
-								{
-									"activity": "Filter2",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
+							"dependsOn": [],
 							"policy": {
 								"timeout": "0.12:00:00",
 								"retry": 0,
@@ -74,6 +68,7 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
+										"wildcardFileName": "customer*",
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
@@ -107,7 +102,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"filename": {
-											"value": "@activity('Filter2').output.value",
+											"value": "@item().name",
 											"type": "Expression"
 										}
 									}
@@ -123,14 +118,7 @@
 						{
 							"name": "Copy data1_copy1",
 							"type": "Copy",
-							"dependsOn": [
-								{
-									"activity": "Filter3",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
+							"dependsOn": [],
 							"policy": {
 								"timeout": "0.12:00:00",
 								"retry": 0,
@@ -145,6 +133,7 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
+										"wildcardFileName": "src_*",
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
@@ -178,7 +167,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"filename": {
-											"value": "@activity('Filter3').output.value",
+											"value": "@item().name",
 											"type": "Expression"
 										}
 									}
@@ -196,38 +185,6 @@
 									}
 								}
 							]
-						},
-						{
-							"name": "Filter2",
-							"type": "Filter",
-							"dependsOn": [],
-							"userProperties": [],
-							"typeProperties": {
-								"items": {
-									"value": "@item().name",
-									"type": "Expression"
-								},
-								"condition": {
-									"value": "@startsWith(item().name, 'customer')",
-									"type": "Expression"
-								}
-							}
-						},
-						{
-							"name": "Filter3",
-							"type": "Filter",
-							"dependsOn": [],
-							"userProperties": [],
-							"typeProperties": {
-								"items": {
-									"value": "@item().name",
-									"type": "Expression"
-								},
-								"condition": {
-									"value": "@startsWith(item().name, 'Src_')",
-									"type": "Expression"
-								}
-							}
 						}
 					]
 				}
