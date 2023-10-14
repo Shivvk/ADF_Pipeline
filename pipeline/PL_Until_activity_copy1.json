@@ -1,0 +1,94 @@
+{
+	"name": "PL_Until_activity_copy1",
+	"properties": {
+		"activities": [
+			{
+				"name": "var",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "var",
+					"value": 1
+				}
+			},
+			{
+				"name": "Until1",
+				"type": "Until",
+				"dependsOn": [
+					{
+						"activity": "var",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@greater(variables('var'),5)",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Varb equal to var",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "Varb",
+								"value": {
+									"value": "@variables('var')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "increasingthe varvalue",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Varb equal to var",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "var",
+								"value": {
+									"value": "@add(variables('Varb'),1)",
+									"type": "Expression"
+								}
+							}
+						}
+					],
+					"timeout": "0.12:00:00"
+				}
+			}
+		],
+		"variables": {
+			"var": {
+				"type": "Integer",
+				"defaultValue": 1
+			},
+			"Varb": {
+				"type": "Integer"
+			}
+		},
+		"annotations": []
+	}
+}
