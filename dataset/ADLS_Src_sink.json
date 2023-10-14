@@ -19,6 +19,10 @@
 					"value": "@dataset().filename",
 					"type": "Expression"
 				},
+				"folderPath": {
+					"value": "@concat('src-', formatDateTime(utcnow(), 'yyyyMMddHHmmss'))",
+					"type": "Expression"
+				},
 				"fileSystem": "sinkdesti"
 			},
 			"columnDelimiter": ",",
