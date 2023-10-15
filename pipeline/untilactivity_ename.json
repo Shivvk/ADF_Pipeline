@@ -1,0 +1,183 @@
+{
+	"name": "untilactivity_ename",
+	"properties": {
+		"activities": [
+			{
+				"name": "fetch Ename",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "AzureSqlTable2",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "fetch count",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "fetch Ename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "count",
+					"value": {
+						"value": "@activity('fetch Ename').output.count",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Until1",
+				"type": "Until",
+				"dependsOn": [
+					{
+						"activity": "fetch count",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@greaterOrEquals(variables('current_record'),variables('count'))",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Ename append",
+							"type": "AppendVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "Ename",
+								"value": {
+									"value": "@activity('fetch Ename').output.value[variables('current_record')].ENAME",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "temp equal to current_rec",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Ename append",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp",
+								"value": {
+									"value": "@variables('current_record')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "increase the current_rec",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "temp equal to current_rec",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "current_record",
+								"value": {
+									"value": "@add(variables('temp'),1)",
+									"type": "Expression"
+								}
+							}
+						}
+					],
+					"timeout": "0.12:00:00"
+				}
+			},
+			{
+				"name": "check data",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Until1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Check_data",
+					"value": {
+						"value": "@variables('Ename')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"count": {
+				"type": "Integer"
+			},
+			"Ename": {
+				"type": "Array",
+				"defaultValue": []
+			},
+			"current_record": {
+				"type": "Integer",
+				"defaultValue": 0
+			},
+			"temp": {
+				"type": "Integer"
+			},
+			"Check_data": {
+				"type": "Array"
+			}
+		},
+		"annotations": []
+	}
+}
