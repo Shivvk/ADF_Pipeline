@@ -1,0 +1,104 @@
+{
+	"name": "currentbill",
+	"properties": {
+		"activities": [
+			{
+				"name": "Switch1",
+				"type": "Switch",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"on": {
+						"value": "@{pipeline().parameters.slab}",
+						"type": "Expression"
+					},
+					"cases": [
+						{
+							"value": "1",
+							"activities": [
+								{
+									"name": "bill for slab1",
+									"type": "SetVariable",
+									"dependsOn": [],
+									"policy": {
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "bill",
+										"value": {
+											"value": "@mul(pipeline().parameters.units, 5)",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						},
+						{
+							"value": "2",
+							"activities": [
+								{
+									"name": "bill for slab2",
+									"type": "SetVariable",
+									"dependsOn": [],
+									"policy": {
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "bill",
+										"value": {
+											"value": "@add(1000,mul(sub(pipeline().parameters.units,200),7))",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						},
+						{
+							"value": "3",
+							"activities": [
+								{
+									"name": "bill for slab3",
+									"type": "SetVariable",
+									"dependsOn": [],
+									"policy": {
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "bill",
+										"value": {
+											"value": "@add(1700,mul(sub(pipeline().parameters.units,300),9))",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"slab": {
+				"type": "int"
+			},
+			"units": {
+				"type": "int"
+			}
+		},
+		"variables": {
+			"bill": {
+				"type": "Integer"
+			},
+			"unit_price": {
+				"type": "Integer"
+			}
+		},
+		"annotations": []
+	}
+}
