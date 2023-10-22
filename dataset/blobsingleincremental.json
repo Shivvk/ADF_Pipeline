@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText2",
+	"name": "blobsingleincremental",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Blobload",

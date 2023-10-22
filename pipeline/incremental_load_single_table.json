@@ -119,7 +119,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedText2",
+						"referenceName": "blobsingleincremental",
 						"type": "DatasetReference",
 						"parameters": {
 							"filename": {
