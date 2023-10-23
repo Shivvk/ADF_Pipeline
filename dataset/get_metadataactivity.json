@@ -1,6 +1,9 @@
 {
 	"name": "get_metadataactivity",
 	"properties": {
+		"folder": {
+			"name": "practise"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

@@ -24,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -144,6 +145,9 @@
 			"containername": {
 				"type": "string"
 			}
+		},
+		"folder": {
+			"name": "pipeline practise"
 		},
 		"annotations": []
 	}

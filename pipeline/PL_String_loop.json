@@ -49,6 +49,9 @@
 				"defaultValue": []
 			}
 		},
+		"folder": {
+			"name": "pipeline practise"
+		},
 		"annotations": []
 	}
 }

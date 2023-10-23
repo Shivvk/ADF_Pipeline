@@ -83,6 +83,7 @@
 					"fieldList": [],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -105,6 +106,9 @@
 			"temp": {
 				"type": "Array"
 			}
+		},
+		"folder": {
+			"name": "pipeline practise"
 		},
 		"annotations": []
 	}

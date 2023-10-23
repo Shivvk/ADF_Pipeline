@@ -178,6 +178,9 @@
 				"type": "Array"
 			}
 		},
+		"folder": {
+			"name": "pipeline practise"
+		},
 		"annotations": []
 	}
 }

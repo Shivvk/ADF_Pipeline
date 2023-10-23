@@ -73,6 +73,9 @@
 				"type": "String"
 			}
 		},
+		"folder": {
+			"name": "pipeline practise"
+		},
 		"annotations": []
 	}
 }

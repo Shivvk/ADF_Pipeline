@@ -191,6 +191,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "pipeline practise"
+		},
 		"annotations": []
 	}
 }

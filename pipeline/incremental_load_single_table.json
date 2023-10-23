@@ -120,13 +120,7 @@
 				"outputs": [
 					{
 						"referenceName": "blobsingleincremental",
-						"type": "DatasetReference",
-						"parameters": {
-							"filename": {
-								"value": "@activity('Lookup_maxprocessed_value').output.firstRow.tablename",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				]
 			},
@@ -174,6 +168,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "pipeline practise"
+		},
 		"annotations": []
 	}
 }

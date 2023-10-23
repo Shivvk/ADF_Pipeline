@@ -99,6 +99,9 @@
 				"type": "Integer"
 			}
 		},
+		"folder": {
+			"name": "pipeline practise"
+		},
 		"annotations": []
 	}
 }

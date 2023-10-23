@@ -82,6 +82,9 @@
 				"type": "int"
 			}
 		},
+		"folder": {
+			"name": "pipeline practise"
+		},
 		"annotations": []
 	}
 }
